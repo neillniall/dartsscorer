@@ -1,0 +1,17 @@
+{
+  "name": "DartScorer",
+  "version": "0.0.1",
+  "author": "Niall McLoughlin",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  }, 
+  "engines": {
+    "node": "0.10.31"
+  },
+  "dependencies": {
+    "express": "3.4.0",
+    "newrelic": "*",
+    "json-query": "*"
+  }
+}

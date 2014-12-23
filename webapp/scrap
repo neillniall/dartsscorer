@@ -1,0 +1,13 @@
+	      <button ng-repeat="scr in scoreArray" ng-click="addDart(scr.score)" >
+	        <p>{{scr.score}}</p>
+	      </button>
+
+	       <input type="text" ng-model="remaining"/>
+
+
+	             <div class="row" >
+	      Last Three Darts
+	      <span class="score" ng-repeat="dart in lastThreeDarts">
+		    {{dart.score}}
+		  </span>
+	  </div>

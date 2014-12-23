@@ -1,0 +1,134 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.angularjs.org/1.2.6/angular.min.js"></script>
+    <script src="js/dartController.js"></script>
+    <!--<script src="js/speakClient.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="css/darts.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css" />
+  </head>
+  <body>
+
+    
+    <div class="container" ng-controller="HelloCntl">
+      <div id="audio"></div>
+
+      <div class="row">Name: <input type="text" ng-model="name"></input>{{name}}</div>
+      
+      <div class="row mainscore">
+          {{remaining}}
+          <span class="score" ng-repeat="dart in lastThreeDarts">
+		    {{dart.score}}
+		  </span>
+      </div>
+
+      <div class="row">
+          <label>Finish:</label>
+          <span>
+		    {{standardFinish.dart1}} |
+		    {{standardFinish.dart2}} |
+		    {{standardFinish.dart3}}
+		  </span>
+      </div>
+
+                <div class="row">
+<label>Specials</label>
+		      <button type="button"  ng-click="addDart(0)" >
+		        <p><b>0</b></p>
+		      </button>
+
+		    <button ng-click="addDart(25)" >
+<p><b>25</b></p>
+	        </button>
+
+            <button ng-click="addDart(50)" >
+	         <p><b>50</b></p>
+	        </button>
+
+
+		      </div>
+
+            <div class="row">
+
+
+
+		      <label>Singles</label>
+		      <div>
+		      <button ng-repeat="n in [1,2,3,4,5,6,7,8,9,10]" ng-click="addDart(1 * n)" >
+		        <p><b>{{n}}</b></p>
+		      </button>
+		      </div>
+
+             <div>
+		       <button ng-repeat="n in [11,12,13,14,15,16,17,18,19,20]" ng-click="addDart(1 * n)" >
+		        <p><b>{{n}}</b></p>
+		      </button>
+		      </div>
+
+	      </div>
+
+          <div class="row">
+          	      
+
+	        
+	        <label>Doubles</label>
+	        <div>
+            <button ng-repeat="n in [1,2,3,4,5,6,7,8,9,10]" ng-click="addDart(2 * n)" >
+	            <p><b>{{n}}</b></p>
+	        </button>
+	        </div>
+<div>
+            <button ng-repeat="n in [11,12,13,14,15,16,17,18,19,20]" ng-click="addDart(2 * n)" >
+	            <p><b>{{n}}</b></p>
+	        </button>
+
+	        </div>
+
+	      </div> 
+
+          <div class="row">
+
+	        <label>Trebles</label>
+<div>
+	        <button ng-repeat="n in [1,2,3,4,5,6,7,8,9,10]" ng-click="addDart(3 * n)" >
+	            <p><b>{{n}}</b></p>
+	        </button>
+	        </div>
+
+	        <div>
+	        <button ng-repeat="n in [11,12,13,14,15,16,17,18,19,20]" ng-click="addDart(3 * n)" >
+	            <p><b>{{n}}</b></p>
+	        </button>
+	        </div>
+
+	      </div>
+
+      <div class="row">
+<label>Manual Score:</label>
+       <input type="text" onchange="calculateScore(lastScore)" ng-model="lastScore" x-webkit-speech/>
+	   
+	    <input type="button" value="Start Voice Input" ng-click="startVoiceInput()" ng-disabled="voiceInputProcessor != undefined"/>
+	    <input type="button" value="Stop Voice Input" ng-click="stopVoiceInput()"  ng-disabled="voiceInputProcessor == undefined"/>
+	   
+	   
+       <input type="button" value="Confirm Score" ng-click="calculateScore(lastScore)"/>
+       <input type="button" value="Reset Game" ng-click="resetGame()"/>
+      </div>
+
+      <div class="row scoreboard">
+      <label>Three Dart Scores</label>
+      <div  ng-repeat="scores in totalThreeDartsScores">
+
+      <span class="scoreboard" ng-repeat="darts in scores.darts">
+      {{darts.score}}
+      </span>
+      	     ({{scores.score}}) > {{scores.remaining}}
+	  </div>
+
+
+
+    </div>
+  </body>
+</html>
