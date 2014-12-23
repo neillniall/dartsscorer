@@ -7,8 +7,8 @@ var jsonQuery = require('json-query')
 var Util = require('util');
 var Tls = require('tls');
 
-var port = process.env.PORT || 3000;
-var host = process.env.VCAP_APP_HOST || "127.0.0.1";
+var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3000;
+var host = process.env.OPENSHIFT_NODEJS_IP || process.env.VCAP_APP_HOST || "127.0.0.1";
 
 var app = express();
 
